@@ -1,7 +1,5 @@
-index.html
-alexa.html
-hilvi.html
-lisa.html
-mely.html
-naida.html
-vitha.html
+User-agent: *
+
+Allow: /
+
+Sitemap: https://anggarabaharudin.github.io/VAREINA-OFFICIAL/sitemap.xml
