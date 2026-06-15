@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAREINA NAIDA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0a0a0c;
+    color:#fff;
+}
+
+/* NAV */
+nav{
+    position:sticky;
+    top:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 20px;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter: blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    z-index:1000;
+}
+
+.logo{
+    font-weight:700;
+    letter-spacing:3px;
+    font-size:14px;
+}
+
+.cart-box{
+    background:#fff;
+    color:#000;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.cart-panel{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:320px;
+    height:100vh;
+    background:#0a0a0c;
+    border-left:1px solid rgba(255,255,255,0.08);
+    padding:20px;
+    transition:0.4s ease;
+    z-index:2000;
+    overflow-y:auto;
+}
+
+.cart-panel.active{
+    right:0;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.cart-header h3{
+    font-size:14px;
+    letter-spacing:2px;
+}
+
+.cart-header span{
+    cursor:pointer;
+    font-size:18px;
+}
+
+.cart-item{
+    padding:10px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    font-size:12px;
+    line-height:1.5;
+}
+
+.cart-user{
+    margin-top:20px;
+    font-size:12px;
+    opacity:0.8;
+}
+
+/* HERO BANNER */
+.hero{
+    height:320px;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
+        url("https://i.ibb.co.com/gbrPfn1k/produk-6.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:28px;
+    letter-spacing:4px;
+    font-weight:600;
+}
+
+.hero p{
+    margin-top:8px;
+    opacity:0.7;
+    font-size:13px;
+}
+
+/* SECTION TITLE */
+.section-title{
+    text-align:center;
+    padding:30px 20px 10px;
+    font-size:16px;
+    letter-spacing:3px;
+    opacity:0.8;
+}
+
+/* PRODUCT GRID */
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+/* CARD */
+.card{
+    background:linear-gradient(145deg,#141416,#0a0a0c);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.card img{
+    width:100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    display:block;
+}
+
+.card h3{
+    margin:10px 12px;
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+/* SELECT */
+select{
+    width:90%;
+    margin:5px 12px;
+    padding:8px;
+    background:#111;
+    border:none;
+    color:#fff;
+    border-radius:8px;
+    font-size:12px;
+}
+
+/* BUTTON GROUP */
+.btn-group{
+    display:flex;
+    gap:8px;
+    padding:10px 12px;
+}
+
+button{
+    flex:1;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.2s;
+}
+
+.add{
+    background:#fff;
+    color:#000;
+}
+
+.remove{
+    background:#222;
+    color:#fff;
+}
+
+button:hover{
+    transform:scale(1.02);
+}
+
+/* CHECKOUT */
+.checkout-tab{
+    width:92%;
+    margin:20px auto;
+    background-color: rgba(128, 128, 128, 0.5);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:14px;
+    padding:15px;
+}
+
+.tab-title{
+    font-size:11px;
+    letter-spacing:3px;
+    opacity:0.6;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+.checkout-tab input{
+    width:100%;
+    margin:6px 0;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#111;
+    color:#fff;
+    font-size:12px;
+    outline:none;
+}
+
+.checkout-tab input::placeholder{
+    color:#777;
+}
+.checkout-btn{
+    width:92%;
+    margin:25px auto;
+    display:block;
+    padding:14px;
+    background:linear-gradient(90deg,#ffffff,#cfcfcf);
+    border:none;
+    border-radius:14px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    font-size:11px;
+    opacity:0.5;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="logo">
+    <a href="index.html" style="text-decoration:none;color:inherit;">
+        VAREINA OFFICIAL
+    </a>
+</div>
+    <div class="cart-box" onclick="toggleCart()">
+    🛒 <span id="cartCount">0</span>
+</div>
+</nav>
+
+<!-- HERO BANNER -->
+<div class="hero">
+    <h1>VAREINA NAIDA</h1>
+    <p>Crafted for Elegance • Luxury Collection</p>
+</div>
+
+<div class="section-title">NAIDA LOW-HEEL SANDALS</div>
+
+<!-- PRODUCTS -->
+<div class="container">
+
+<!-- PRODUCT 1 -->
+<!-- PRODUCT 1 -->
+<div class="checkout-tab">
+
+    <div class="tab-title">DATA PEMBELI</div>
+
+    <input type="text" id="namaPembeli" placeholder="Nama Lengkap">
+
+    <input type="text" id="noHP" placeholder="Nomor Handphone">
+
+    <input type="text" id="alamatPembeli" placeholder="Alamat Lengkap">
+
+</div>
+<div class="card">
+    <img src="https://i.ibb.co.com/4Rn8KJ4s/DSC075475.jpg">
+    <h3>NAIDA PUTIH</h3>
+<select id="size_p1" onchange="setSize('p1')">
+    <option value="36">Size 36</option>
+    <option value="37">Size 37</option>
+    <option value="38">Size 38</option>
+    <option value="39">Size 39</option>
+    <option value="40">Size 40</option>
+    <option value="41">Size 41</option>
+</select>
+    <div class="btn-group">
+        <button class="remove" onclick="changeQty('p1',-1)">-</button>
+        <button class="add" onclick="changeQty('p1',1)">+</button>
+    </div>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="card">
+    <img src="https://i.ibb.co.com/f5GxGMw/DSC075474.jpg">
+    <h3>NAIDA HITAM</h3>
+<select id="size_p2" onchange="setSize('p2')">
+    <option value="36">Size 36</option>
+    <option value="37">Size 37</option>
+    <option value="38">Size 38</option>
+    <option value="39">Size 39</option>
+    <option value="40">Size 40</option>
+    <option value="41">Size 41</option>
+</select>
+    <div class="btn-group">
+        <button class="remove" onclick="changeQty('p2',-1)">-</button>
+        <button class="add" onclick="changeQty('p2',1)">+</button>
+    </div>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="card">
+    <img src="https://i.ibb.co.com/3JR7d8H/DSC075473.jpg">
+    <h3>NAIDA CREAM</h3>
+<select id="size_p3" onchange="setSize('p3')">
+    <option value="36">Size 36</option>
+    <option value="37">Size 37</option>
+    <option value="38">Size 38</option>
+    <option value="39">Size 39</option>
+    <option value="40">Size 40</option>
+    <option value="41">Size 41</option>
+</select>
+    <div class="btn-group">
+        <button class="remove" onclick="changeQty('p3',-1)">-</button>
+        <button class="add" onclick="changeQty('p3',1)">+</button>
+    </div>
+</div>
+
+</div>
+
+<button class="checkout-btn" onclick="checkoutAll()">CHECKOUT WHATSAPP</button>
+
+<footer>
+© 2026 VAREINA NAIDA • Luxury Fashion Brand
+</footer>
+
+<script>
+
+let cart = {
+    p1:{name:"Vareina NAIDA PUTIH", qty:0, size:"36"},
+    p2:{name:"Vareina NAIDA HITAM", qty:0, size:"36"},
+    p3:{name:"Vareina NAIDA CREAM", qty:0, size:"36"}
+};
+
+function changeQty(p, val){
+
+    cart[p].qty += val;
+    if(cart[p].qty < 0) cart[p].qty = 0;
+
+    // AMBIL SIZE TERAKHIR DIPILIH
+    let sizeSelect = document.getElementById("size_" + p);
+    if(sizeSelect){
+        cart[p].size = sizeSelect.value;
+    }
+
+    updateCart();
+html += `
+<div class="cart-item">
+Produk: ${item.name}<br>
+Size: ${item.size}<br>
+Qty: ${item.qty}
+</div>`;
+}
+
+function toggleCart(){
+    document.getElementById("cartPanel").classList.toggle("active");
+}
+
+function setSize(p){
+    let size = document.getElementById("size_" + p).value;
+    cart[p].size = size;
+}
+
+function updateCart(){
+    let total = 0;
+    let html = "";
+
+    for(let i in cart){
+        let item = cart[i];
+        total += item.qty;
+
+        if(item.qty > 0){
+            html += `
+<div class="cart-item">
+Produk: ${item.name}<br>
+Size: ${item.size}<br>
+Qty: ${item.qty}
+</div>`;
+        }
+    }
+
+    document.getElementById("cartCount").innerText = total;
+    document.getElementById("cartItems").innerHTML = html;
+
+    // update data pembeli di slide
+    document.getElementById("cartNama").innerText =
+        "Nama: " + (document.getElementById("namaPembeli")?.value || "-");
+
+    document.getElementById("cartHP").innerText =
+        "No HP: " + (document.getElementById("noHP")?.value || "-");
+
+    document.getElementById("cartAlamat").innerText =
+        "Alamat: " + (document.getElementById("alamatPembeli")?.value || "-");
+}
+
+function checkoutAll(){
+
+    let phone = "6289639495706";
+
+    let nama = document.getElementById("namaPembeli").value;
+    let hp = document.getElementById("noHP").value;
+    let alamat = document.getElementById("alamatPembeli").value;
+
+    let message = "✨ ORDER VAREINA NAIDA ✨\n\n";
+
+    let hasItem = false;
+
+    for(let i in cart){
+        let item = cart[i];
+
+        if(item.qty > 0){
+            message +=
+`Produk: ${item.name}
+Size: ${item.size}
+Qty: ${item.qty}
+
+`;
+            hasItem = true;
+        }
+    }
+
+    if(!hasItem){
+        alert("Keranjang masih kosong!");
+        return;
+    }
+
+    message += 
+`🧾 DATA PEMBELI
+Nama: ${nama}
+No HP: ${hp}
+Alamat: ${alamat}
+
+Mohon konfirmasi total & stok 🙏`;
+
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
+    window.location.href = url;
+}
+
+</script>
+
+<div id="cartPanel" class="cart-panel">
+
+    <div class="cart-header">
+        <h3>Rincian Pesanan</h3>
+        <span onclick="toggleCart()">✕</span>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-user">
+        <p><b>Data Pembeli</b></p>
+        <p id="cartNama"></p>
+        <p id="cartHP"></p>
+        <p id="cartAlamat"></p>
+    </div>
+
+</div>
+</body>
+</html>
