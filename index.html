@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="q1a7mWx_M6leSu1JQzQzZ81Ipwtd2dF33Sp58C_erAM" />
+<title>VAREINA OFFICIAL STORE</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+.credit{
+font-size:10px;
+letter-spacing:1px;
+opacity:0.6;
+
+
+/* awalnya tersembunyi */
+.fade-credit{
+opacity:0;
+transform:translateY(10px);
+transition:all 0.8s ease;
+}
+
+/* saat aktif */
+.fade-credit.show{
+opacity:0.6;
+transform:translateY(0);
+}
+
+/* 🔧 INI YANG DIPERBAIKI */
+margin-top:2px;
+
+font-weight:500;
+line-height:1;
+}
+
+/* BASE TAB */
+.tab{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:4px;
+padding:10px 14px;
+border-radius:14px;
+font-size:12px;
+min-width:80px;
+transition:0.3s;
+font-weight:600;
+}
+
+.tab i{
+font-size:18px;
+}
+
+/* HOVER PREMIUM */
+.tab:hover{
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* ================= BRAND COLORS ================= */
+
+/* PRODUCT */
+.tab-product{
+background:#8B3E54;
+color:#fff;
+}
+
+/* INSTAGRAM */
+.tab-ig{
+background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+color:#fff;
+}
+
+/* SHOPEE */
+.tab-shopee{
+background:#EE4D2D;
+color:#fff;
+}
+
+/* TIKTOK */
+.tab-tiktok{
+background:#000;
+color:#fff;
+}
+
+/* WHATSAPP */
+.tab-wa{
+background:#25D366;
+color:#fff;
+}
+
+/* RESPONSIVE FIX */
+.menu{
+flex-wrap:wrap;
+gap:10px;
+}
+
+.view{
+display:none;
+opacity:0;
+transform:translateY(15px);
+transition:0.4s ease;
+}
+
+.view.active{
+display:block;
+opacity:1;
+transform:translateY(0);
+}
+
+/* smooth feel */
+body{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+font-family:Arial;
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+url("https://i.ibb.co.com/MDH8pyJx/banner.jpg");
+background-size:cover;
+background-attachment:fixed;
+background-position:center;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:14px 6%;
+background:#570a0a80;
+border-bottom:1px solid #eeeeee14;
+transition:0.3s;
+}
+
+.navbar.scrolled{
+padding:8px 6%;
+box-shadow:0 8px 25px rgba(0,0,0,0.40);
+}
+
+.logo img{
+height:42px;
+transition:0.3s;
+}
+
+.navbar.scrolled .logo img{
+height:32px;
+}
+
+/* MENU */
+.menu{
+display:flex;
+gap:25px;
+align-items:center;
+justify-content:center;
+flex:1;
+flex-wrap:wrap;
+}
+
+.tab{
+display:flex;
+align-items:center;
+gap:6px;
+padding:8px 12px;
+border-radius:30px;
+text-decoration:none;
+font-size:12px;
+color:#444;
+background:#fff;
+border:1px solid #eee;
+transition:0.3s;
+}
+
+.tab:hover{
+transform:translateY(-2px);
+color:#8B3E54;
+}
+
+.tab.active{
+background:#8B3E54;
+color:#fff;
+}
+
+.tab.wa{
+background:#25D366;
+color:#fff;
+border:none;
+}
+
+/* CART ICON */
+.cart-icon{
+position:relative;
+font-size:18px;
+cursor:pointer;
+}
+
+.badge{
+position:absolute;
+top:-8px;
+right:-10px;
+background:#8B3E54;
+color:#fff;
+font-size:11px;
+padding:2px 6px;
+border-radius:50%;
+}
+
+/* ================= HERO ================= */
+.hero{
+min-height:80vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#fff;
+background:transparent;
+}
+
+.hero h1{
+font-size:42px;
+margin-bottom:4px;
+line-height:1.1;
+}
+
+/* ================= PRODUCTS ================= */
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+padding:20px;
+opacity:0;
+transform:translateY(20px);
+transition:0.5s ease;
+}
+
+.products.show{
+opacity:1;
+transform:translateY(0);
+}
+
+
+.card{
+background:#ffffff70;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 3px 10px rgb(0, 0, 0);
+}
+
+.card img{
+width:100%;
+height:280px;
+object-fit:cover;
+}
+
+.card-body{
+padding:10px;
+}
+
+.price{
+color:#8B3E54;
+font-weight:bold;
+}
+
+/* BUTTON */
+.btn{
+padding:10px;
+background:#8B3E54;
+color:#fff;
+text-align:center;
+cursor:pointer;
+border-radius:8px;
+margin-top:8px;
+}
+
+/* ================= DRAWER ================= */
+
+/* OVERLAY */
+#overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:none;
+z-index:998;
+}
+
+/* CART DRAWER */
+.cart-drawer{
+position:fixed;
+top:0;
+right:-380px;
+width:340px;
+height:100%;
+background:#fff;
+z-index:999;
+box-shadow:-10px 0 30px rgba(0,0,0,0.2);
+transition:0.3s;
+display:flex;
+flex-direction:column;
+}
+
+.cart-drawer.active{
+right:0;
+}
+
+/* HEADER */
+.cart-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+/* ITEMS */
+#cartItems{
+flex:1;
+overflow-y:auto;
+padding:10px;
+}
+
+/* ITEM */
+.item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 0;
+border-bottom:1px solid #eee;
+font-size:13px;
+}
+
+/* FOOTER */
+.cart-footer{
+padding:15px;
+border-top:1px solid #eee;
+}
+
+.total{
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.checkout{
+background:#25D366;
+color:#fff;
+padding:12px;
+text-align:center;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* QTY BUTTON */
+.item button{
+border:none;
+background:#8B3E54;
+color:#fff;
+border-radius:6px;
+padding:4px 8px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+
+<div class="logo">
+<img src="https://i.ibb.co.com/8nwdQRB5/logo.png">
+</div>
+
+<nav class="menu">
+
+<a href="#produk" class="tab tab-product">
+<i class="fa-solid fa-bag-shopping"></i>
+<span>Produk</span>
+</a>
+
+<a href="https://www.instagram.com/vareinaofficial/" target="_blank" class="tab tab-ig">
+<i class="fa-brands fa-instagram"></i>
+<span>Instagram</span>
+</a>
+
+<a href="https://shopee.co.id/vareina" target="_blank" class="tab tab-shopee">
+<i class="fa-solid fa-store"></i>
+<span>Shopee</span>
+</a>
+
+<a href="https://www.tiktok.com/@vareina.id" target="_blank" class="tab tab-tiktok">
+<i class="fa-brands fa-tiktok"></i>
+<span>TikTok</span>
+</a>
+
+<a href="https://wa.me/6289639495706" target="_blank" class="tab tab-wa">
+<i class="fa-brands fa-whatsapp"></i>
+<span>WhatsApp</span>
+</a>
+
+</nav>
+
+
+</header>
+
+<!-- HERO -->
+<div class="hero" onclick="resetView()">
+<div>
+<h1>VAREINA OFFICIAL STORE</h1>
+<p>Premium Women Sandals • Elegant • Comfortable • Stylish</p>
+<p>Local Brand Shoes id © 2026</p>
+<div class="credit">
+Site by Anggara Baharudin
+</div>
+</div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="produk"></section>
+
+
+</div>
+
+<script>
+
+/* PRODUCTS */
+const products = [
+{ id:1, name:"VAREINA MELY", price:149000, img:"https://i.ibb.co.com/PvQZQ0sq/produk-1.jpg" },
+{ id:2, name:"VAREINA VITHA", price:169000, img:"https://i.ibb.co.com/2VRLrgM/produk-2.jpg" },
+{ id:3, name:"VAREINA HILVI", price:179000, img:"https://i.ibb.co.com/XZ9yNSw9/produk-3.jpg" },
+{ id:4, name:"VAREINA ALEXA", price:159000, img:"https://i.ibb.co.com/xqBS97cr/produk-4.jpg" },
+{ id:5, name:"VAREINA LISA", price:189000, img:"https://i.ibb.co.com/FbLFR81h/produk-5.jpg" },
+{ id:6, name:"VAREINA NAIDA", price:199000, img:"https://i.ibb.co.com/gbrPfn1k/produk-6.jpg" }
+];
+
+
+/* RENDER PRODUCTS */
+const list = document.getElementById("produk");
+
+const productPages = {
+    1:"mely.html",
+    2:"vitha.html",
+    3:"hilvi.html",
+    4:"alexa.html",
+    5:"lisa.html",
+    6:"naida.html"
+};
+
+products.forEach(p=>{
+    list.innerHTML += `
+    <div class="card" onclick="window.location.href='${productPages[p.id]}'">
+        <img src="${p.img}">
+        <div class="card-body">
+            <h3>${p.name}</h3>
+            <div class="price">Rp${p.price.toLocaleString()}</div>
+            <div class="btn">Lihat Detail</div>
+        </div>
+    </div>
+    `;
+});
+
+/* SHOW PRODUCTS */
+
+/* NAVIGASI KE SHOP */
+document.querySelector('a[href="#produk"]').addEventListener("click",function(e){
+e.preventDefault();
+goShop();
+});
+
+/* KE SHOP */
+function goShop(){
+
+document.getElementById("homeView").classList.remove("active");
+document.getElementById("shopView").classList.add("active");
+
+/* tampilkan produk */
+let section = document.getElementById("produk");
+section.style.display = "grid";
+section.classList.add("show");
+
+}
+
+/* KEMBALI KE HOME (klik banner) */
+function goHome(){
+
+document.getElementById("shopView").classList.remove("active");
+document.getElementById("homeView").classList.add("active");
+
+/* sembunyikan produk */
+let section = document.getElementById("produk");
+section.classList.remove("show");
+
+setTimeout(()=>{
+section.style.display = "none";
+},300);
+
+/* scroll atas */
+window.scrollTo({top:0, behavior:"smooth"});
+}
+document.querySelector('a[href="#produk"]').addEventListener("click",function(e){
+e.preventDefault();
+
+let section = document.getElementById("produk");
+
+/* PENTING: tampilkan dulu */
+section.style.display = "grid";
+
+/* lalu animasi */
+setTimeout(()=>{
+section.classList.add("show");
+},50);
+
+/* scroll */
+section.scrollIntoView({behavior:"smooth"});
+
+});
+
+/* ADD CART */
+function addCart(id){
+let item = cart.find(c=>c.id===id);
+
+if(item){
+item.qty++;
+}else{
+let p = products.find(x=>x.id===id);
+cart.push({...p, qty:1});
+}
+
+renderCart();
+}
+
+/* MINUS */
+function minusCart(id){
+let item = cart.find(c=>c.id===id);
+if(!item) return;
+
+item.qty--;
+if(item.qty<=0){
+cart = cart.filter(c=>c.id!==id);
+}
+
+renderCart();
+}
+
+/* RENDER CART */
+function renderCart(){
+
+document.getElementById("count").innerText =
+cart.reduce((a,b)=>a+b.qty,0);
+
+let html = "";
+let total = 0;
+
+cart.forEach(c=>{
+total += c.price * c.qty;
+
+html += `
+<div class="item">
+<div>
+<b>${c.name}</b><br>
+Rp${c.price.toLocaleString()}
+</div>
+
+<div class="credit fade-credit">
+Site by Anggara Baharudin
+</div>
+
+<div style="display:flex;gap:5px;align-items:center;">
+<button onclick="minusCart(${c.id})">-</button>
+<span>${c.qty}</span>
+<button onclick="addCart(${c.id})">+</button>
+</div>
+</div>
+`;
+});
+
+document.getElementById("cartItems").innerHTML = html;
+document.getElementById("total").innerText =
+"Total: Rp" + total.toLocaleString();
+}
+
+/* TOGGLE CART */
+function toggleCart(){
+let box = document.getElementById("cartBox");
+let overlay = document.getElementById("overlay");
+
+box.classList.toggle("active");
+overlay.style.display = overlay.style.display==="block"?"none":"block";
+}
+
+/* CHECKOUT */
+function checkout(){
+
+let msg = "ORDER VAREINA OFFICIAL:%0A%0A";
+let total = 0;
+
+cart.forEach(c=>{
+msg += `- ${c.name} x${c.qty} = Rp${(c.price*c.qty).toLocaleString()}%0A`;
+total += c.price * c.qty;
+});
+
+msg += `%0A💰 TOTAL: Rp${total.toLocaleString()}`;
+
+window.open("https://wa.me/6289639495706?text="+msg,"_blank");
+}
+
+/* NAVBAR SHRINK */
+window.addEventListener("scroll",()=>{
+document.getElementById("navbar")
+.classList.toggle("scrolled", window.scrollY > 10);
+});
+
+function resetView(){
+
+let section = document.getElementById("produk");
+
+/* sembunyikan animasi */
+section.classList.remove("show");
+
+/* lalu sembunyikan total */
+setTimeout(()=>{
+section.style.display = "none";
+},300);
+
+window.scrollTo({top:0, behavior:"smooth"});
+
+function handleCreditScroll(){
+
+const credit = document.querySelector(".fade-credit");
+if(!credit) return;
+
+const rect = credit.getBoundingClientRect();
+
+if(rect.top < window.innerHeight - 50){
+credit.classList.add("show");
+}
+
+}
+
+window.addEventListener("scroll", handleCreditScroll);
+window.addEventListener("load", handleCreditScroll);
+
+}
+</script>
+
+</body>
+</html>
